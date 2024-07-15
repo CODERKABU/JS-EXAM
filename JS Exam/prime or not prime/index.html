@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Number</title>
+    <script>
+        function storeNumber() {
+            const number = document.getElementById('number').value;
+            localStorage.setItem('storedNumber', number);
+            window.location.href = 'showAnswer.html';
+        }
+    </script>
+</head>
+<body>
+    <h1>Enter a Number</h1>
+    <input type="number" id="number">
+    <button onclick="storeNumber()">Store Number</button>
+</body>
+</html>

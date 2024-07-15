@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Library</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .books-list {
+            margin-top: 20px;
+        }
+        .books-list h2 {
+            color: #333;
+        }
+        .books-list p {
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Object Library</h1>
+    <input type="text" id="bookTitle" placeholder="Enter book title">
+    <button onclick="addBookToLibrary()">Add Book</button>
+    <div class="books-list" id="booksList">
+        <h2>Books in the Library:</h2>
+        <p id="books">No books in the library.</p>
+    </div>
+
+    <script>
+        // Define the object library
+        const objectLibrary = {
+            books: [],
+
+            // Method to add a book to the books array
+            addBook: function (bookTitle) {
+                if (bookTitle) {
+                    this.books.push(bookTitle);
+                }
+            },
+
+            // Method to list all books in the books array
+            listBooks: function () {
+                if (this.books.length === 0) {
+                    return "No books in the library.";
+                } else {
+                    return this.books.join("<br>");
+                }
+            }
+        };
+
+        // Function to add a book to the library and update the list
+        function addBookToLibrary() {
+            const bookTitle = document.getElementById('bookTitle').value;
+            if (bookTitle.trim() !== "") {
+                objectLibrary.addBook(bookTitle);
+                document.getElementById('bookTitle').value = ''; // Clear the input field
+                document.getElementById('books').innerHTML = objectLibrary.listBooks();
+            } else {
+                alert("Please enter a book title.");
+            }
+        }
+    </script>
+
+</body>
+</html>
